@@ -32,12 +32,12 @@ void VigenereCipher::setKey( const std::string& key )
 
     charLookup_.clear();//ensure the map is empty
     //loop over key with i as each character
-    //CaesarCipher tempCipher{0}; //temporary cipher to fill char loohup map
+    CaesarCipher tempCipher{0}; //temporary cipher to fill char loohup map
     for (char i : key_){
         //check if 
         if(charLookup_.find(i)==charLookup_.end()){
-            //tempCipher=CaesarCipher{Alphabet::alphabet.find(i)}; //create casesar cipher with casear key corresponding to position of vigenere key character in alphabet
-            charLookup_.insert(std::make_pair(i,CaesarCipher(Alphabet::alphabet.find(i)))); //insert character caesar pair into lookup table
+            tempCipher=CaesarCipher{Alphabet::alphabet.find(i)}; //create casesar cipher with casear key corresponding to position of vigenere key character in alphabet
+            charLookup_.insert(std::make_pair(i,tempCipher)); //insert character caesar pair into lookup table
         }
     }
 
