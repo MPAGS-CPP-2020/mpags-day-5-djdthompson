@@ -73,7 +73,7 @@ Available options:
 
   -c|--cipher CIPHER
                       Specify the cipher to be used to perform the encryption/decryption
-                      CIPHER can either be caesar or playfair - caesar is the default
+                      CIPHER can either be caesar, playfair or vigenere - caesar is the default
 
   -k|--key KEY
                       Specify the cipher KEY
@@ -98,7 +98,7 @@ classical ciphers, it is transliterated using the following rules:
 - Digits are translated to their English equivalent words (e.g. '0' -> "ZERO")
 - All other characters (punctuation) are discarded
 
-At present, the Caesar and Playfair ciphers are supported.
+At present, the Caesar, Playfair and Vigenere ciphers are supported.
 
 # Testing
 
@@ -124,13 +124,17 @@ follows:
     │   ├── CaesarCipher.cpp
     │   ├── CaesarCipher.hpp
     │   ├── CipherMode.hpp
+    │   ├── Cipher.hpp
     │   ├── CipherType.hpp
     │   ├── PlayfairCipher.cpp
     │   ├── PlayfairCipher.hpp
     │   ├── ProcessCommandLine.cpp
     │   ├── ProcessCommandLine.hpp
     │   ├── TransformChar.cpp
-    │   └── TransformChar.hpp
+    │   ├── TransformChar.hpp
+    │   ├── VigenereCipher.cpp
+    │   └── VigenereCipher.hpp
+    │  
     ├── README.md                      This file, describes the project
     ├── Testing                        Subdirectory for testing the MPAGSCipher library
     │   ├── CMakeLists.txt
@@ -140,6 +144,8 @@ follows:
     │   ├── testHello.cpp
     │   ├── testPlayfairCipher.cpp
     │   ├── testProcessCommandLine.cpp
+    │   ├── testCiphers.cpp
+    │   ├── testVigenereCipher.cpp
     │   └── testTransformChar.cpp
     └── mpags-cipher.cpp               Main program C++ source file
 ```
