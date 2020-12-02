@@ -45,10 +45,10 @@ class PlayfairCipher : public Cipher {
 
   private:
     /// The grid dimension
-    std::string::size_type gridDim_ = 5;
+    static const std::string::size_type gridDim_ = 5;
 
     /// The key length = grid dim^2
-    std::string::size_type keyLength_ = gridDim_*gridDim_;
+    static const std::string::size_type keyLength_ = gridDim_*gridDim_;
 
     /// The cipher key
     std::string key_ = "";

@@ -9,6 +9,8 @@
 #include "PlayfairCipher.hpp"
 #include "VigenereCipher.hpp"
 #include "CipherMode.hpp"
+#include "CipherType.hpp"
+#include "CipherFactory.hpp"
 
 //function returns true if cipher has worked, false if not
 bool testCipher (const Cipher& cipher, const CipherMode mode, const std::string& inputText, const std::string& expecOutput){
@@ -33,4 +35,20 @@ TEST_CASE("Test decryption of three ciphers", "[decryption]"){
     REQUIRE(testCipher(cc,CipherMode::Decrypt,"IFMMPXPSME",testPhrase));
     REQUIRE(testCipher(pc,CipherMode::Decrypt,"OBQKHQVPQMFX","HELXLOWORLDZ"));
     REQUIRE(testCipher(vc,CipherMode::Decrypt,"AIDEYAMKPV",testPhrase));
+}
+
+TEST_CASE("Test encryption/Decryption with vectors of base class pointers","[base-class-pointers]"){
+    std::vector<std::unique_ptr<Cipher>> cipherPtrVector;
+    cipherPtrVector.push_back(cipherFactory(CipherType::Caesar,"27"));
+    cipherPtrVector.push_back(cipherFactory(CipherType::Playfair,"testKey"));
+    cipherPtrVector.push_back(cipherFactory(CipherType::Vigenere,"testKey"));
+    std::string testPhrase{"HELLOWORLD"}; //test phrase as used in previous tests
+    std::vector<std::string> testAnswersEncrypt = {"IFMMPXPSME","OBQKHQVPQMFX","AIDEYAMKPV"}; //vector of answers to index in require statements for encrypt
+    std::vector<std::string> testAnswersDecrypt = {testPhrase,"HELXLOWORLDZ",testPhrase}; //vector of answers to index in require statements for decrypt
+    int i{0};
+    for(const auto& v : cipherPtrVector){
+        REQUIRE(v->applyCipher(testPhrase,CipherMode::Encrypt)==testAnswersEncrypt[i]);
+        REQUIRE(v->applyCipher(testAnswersEncrypt[i],CipherMode::Decrypt)==testAnswersDecrypt[i]);
+        i++;
+    }
 }

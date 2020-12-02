@@ -11,6 +11,8 @@ project(MPAGSCipher VERSION 0.4.0)
 #   running make as 'make VERBOSE=1'.
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXXSTANDARD_REQUIRED ON)
 # - Don't allow C++ Compiler Vendor Extensions
 set(CMAKE_CXX_EXTENSIONS OFF)
 

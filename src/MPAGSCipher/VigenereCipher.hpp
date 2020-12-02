@@ -23,7 +23,7 @@ class VigenereCipher : public Cipher {
 public:
     /**
      * Create a new VigenèreCipher with the given key
-     * TESTESTESTEST
+     *
      *
      * \param key the key to use in the cipher
      */

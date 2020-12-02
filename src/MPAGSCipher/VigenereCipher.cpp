@@ -47,15 +47,16 @@ void VigenereCipher::setKey( const std::string& key )
 }
 
 std::string VigenereCipher::applyCipher( const std::string& inputText, const CipherMode cipherMode ) const{
-    std::cout<<"This is the cipher key: "<<key_<<" to be used for ";
-    switch (cipherMode){
-        case CipherMode::Encrypt:
-            std::cout<<"encryption"<<std::endl;
-            break;
-        case CipherMode::Decrypt:
-            std::cout<<"decryption"<<std::endl;
-            break;
-    }
+    //for debugging, not required now
+    // std::cout<<"This is the cipher key: "<<key_<<" to be used for ";
+    // switch (cipherMode){
+    //     case CipherMode::Encrypt:
+    //         std::cout<<"encryption"<<std::endl;
+    //         break;
+    //     case CipherMode::Decrypt:
+    //         std::cout<<"decryption"<<std::endl;
+    //         break;
+    // }
 
 
     std::string outputText {""};

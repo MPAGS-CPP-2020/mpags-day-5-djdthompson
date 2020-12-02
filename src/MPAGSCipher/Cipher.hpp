@@ -21,10 +21,10 @@
 class Cipher {
     public:
         Cipher()= default;
-        Cipher(const Cipher& rhs)= default; //copy constructor, by copying an exisiting instance
-        Cipher(Cipher&& rhs) = default; //move constructor, move an existing instance 
-        Cipher& operator=(const Cipher& rhs)=default;//copy assignment
-        Cipher& operator=(Cipher&& rhs)=default; //move assignment 
+        Cipher(const Cipher& rhs)= default; ///copy constructor, by copying an exisiting instance
+        Cipher(Cipher&& rhs) = default; ///move constructor, move an existing instance 
+        Cipher& operator=(const Cipher& rhs)=default;///copy assignment
+        Cipher& operator=(Cipher&& rhs)=default; ///move assignment 
         virtual ~Cipher() =default;
 
 
