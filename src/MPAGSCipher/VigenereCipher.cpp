@@ -27,7 +27,8 @@ void VigenereCipher::setKey( const std::string& key )
               std::end(key_) );
 
     if (key_==""){
-        key_=="KEY";//if key is now empty, replace with default key "KEY"
+        key_="KEY";//if key is now empty, replace with default key "KEY"
+        std::cerr<<"No valid characters remaining in user key, using defauklt key 'KEY'"<<std::endl;
     }
 
     charLookup_.clear();//ensure the map is empty
@@ -66,7 +67,9 @@ std::string VigenereCipher::applyCipher( const std::string& inputText, const Cip
     //apply encode/decode on said characther in input text and add to output text
     for (size_t i{0};i<inputText.size();i++){
         outputText+=charLookup_.at(key_[i%key_.size()]).applyCipher(std::string(1,inputText[i]),cipherMode);
+        //.at does bounds checking, [] will not, .at is safer (for vectors, for maps, [] will create new item if not a possible key, with default contructor, like python dictionaries)    
     }
+
 
     return outputText;
 

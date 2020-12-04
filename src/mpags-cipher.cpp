@@ -107,6 +107,13 @@ int main(int argc, char* argv[])
   //two lines replace switch
   auto cipherPtr {cipherFactory(settings.cipherType,settings.cipherKey)};
 
+  //important for a dynamic allocation, if allocation failed pointer would be null, ie false
+  //checking if pointer is pointing to valid object
+  if (!cipherPtr){
+    std::cerr<<"[error] problem constructing requested cipher"<<std::endl;
+    return 1;
+  }
+
   std::string outputText {cipherPtr->applyCipher(inputText, settings.cipherMode)};
 
   //no longer need switch statement
